@@ -107,6 +107,24 @@ $app->get('/post/voter/:postId/:vote',
     }
 );
 
+$app->get('/post/moderer/editer/:postId/',
+		function ($postId) use ($app) {
+			$array = array(
+					'idUser' => 1,
+					'idPost' => $postId,
+					'value' => $vote
+			);
+			Vote::createNew($array);
+			$app->render('idees.php');
+		}
+);
+
+$app->get('/post/moderer/supprimer/:postId/',
+		function ($postId) use ($app) {
+			Post::delete($postId);
+		}
+);
+
 $app->get('/who-we-are/',
     function () use ($app) {
         $app->render('whoWeAre.php');
