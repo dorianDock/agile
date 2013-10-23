@@ -131,7 +131,7 @@ $app->get('/who-we-are/',
     }
 );
 
-$app->get('/connexion',
+$app->post('/connexion',
     function () use ($app) {
         $user = new User();
         if($user->connexion($_POST))
@@ -145,7 +145,7 @@ $app->get('/connexion',
     }
 );
 
-$app->post('/connexion',
+$app->get('/connexion',
     function () use ($app) {
         $app->render('connexion.php');
     }
