@@ -1,9 +1,9 @@
 <?php
-require_once 'Model.php';
 class User extends Model{
 	private $id, $mail, $mdp, $nom, $prenom, $isAdmin, $isResponsable;
 	protected static $table = 'User';
-	
+
+
 	public function getMail(){
 		return $this->mail;
 	}
@@ -14,7 +14,10 @@ class User extends Model{
 	public function getId(){
 		return $this->mail;
 	}
-	
+	public function getIsResponsable(){
+		return $this->isResponsable;	
+	}
+
 
 	public function getNom(){
 		return $this->nom;
@@ -25,9 +28,11 @@ class User extends Model{
 	public function getIsAdmin(){
 		return $this->isAdmin;
 	}
-	public function getIsResponsable(){
-		return $this->isResponsable;
+
+	public function setIsResponsable($isResponsable){
+		$this->isResponsable = $isResponsable;
 	}
+
 
 	public function setMail($unMail){
 		$this->mail= $unMail;
@@ -47,9 +52,6 @@ class User extends Model{
 	}
 	public function setIsAdmin($isAdmin){
 		$this->isAdmin= $isAdmin;
-	}
-	public function setIsResponsable($isResponsable){
-		$this->isResponsable = $isResponsable;
 	}
 
 	public function hydraterSession(){
@@ -88,7 +90,7 @@ class User extends Model{
 		// On ajoute l'utilisateur en base
 		$req = $this->db()->prepare("
 				INSERT INTO user VALUES ('', '".$post['mail']."','".$post['mdp']."','".$post['nom']."','".$post['prenom']."',
-					'".$post['isAdmin']."','".$post['isResponsable']."')
+					'0','0')
 			");
 		$req->execute();
 		// On récupère maintenant le dernier id inséré
@@ -98,7 +100,8 @@ class User extends Model{
 		$_SESSION['prenom']=$post['prenom'];
 		$_SESSION['isAdmin']=$post['isAdmin'];
 		$_SESSION['isResponsable']=$post['isResponsable'];
-		
+
+		return true;
 	}
 
 
