@@ -1,6 +1,20 @@
 <?php
-class Post {
-	private $id, $id_auteur, $id_postParent, $titre, $message;
+require_once './Model/Model.php';
+class Post extends Model {
+    
+        private $id, $idAuteur, $message, $idPostParent;
+    
+    public function getAll(){
+        $result = $db->query("select * from post");
+        $result->setFetchMode(PDO::FETCH_OBJ);
+        return  $result;
+    }
+    
+    
+    
+    
+    
+	/*private $id, $id_auteur, $id_postParent, $titre, $message;
 
 	public function getId(){
 		return $this->id;
@@ -36,7 +50,7 @@ class Post {
 	}
 	
 
-
+*/
 
 
 }
