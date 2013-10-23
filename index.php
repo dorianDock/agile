@@ -21,7 +21,7 @@ require 'Slim/Slim.php';
 $app = new \Slim\Slim();
 
 
-$db = new PDO('mysql:host=localhost;dbname=test', 'userName', 'password');
+//$db = new PDO('mysql:host=localhost;dbname=agile', 'userName', 'password');
 
 /**
  * Step 3: Define the Slim application routes
@@ -44,10 +44,22 @@ $app->get('/pipeau/:name',
     }
 );
 
+// GET route
+$app->get('/insert/', function() use($app){
+		$app->render('insertPost.php');
+	}
+);
+
+// GET route
+$app->post('/insertPost/', function() use($app){
+		echo $app->request->post('message');
+		$app->render('insertPost.php');
+	}
+);
+
 $app->get('/',
-    function () {
-        $template ="Bienvenue sur le site AVIS CITOYEN";
-        echo $template;
+    function () use ($app) {
+        $app->render('accueil.php');
     }
 );
 
