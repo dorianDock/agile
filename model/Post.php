@@ -1,7 +1,8 @@
 <?php
 class Post {
 	private $id, $id_auteur, $id_postParent, $titre, $message;
-
+	public static $table = "Post";
+	
 	public function getId(){
 		return $this->id;
 	}
