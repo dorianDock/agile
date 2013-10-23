@@ -133,7 +133,7 @@ $app->post('/connexion',
         if($user->connexion($_POST))
         {
             $app->flash('success', 'Vous êtes désormais connecté !');
-            $app->redirect('/');
+            $app->redirect('./');
         }
         else{
             $app->flash('error', 'Problème de connexion');
@@ -162,7 +162,7 @@ $app->post('/inscription',
         if($user->inscrire($_POST))
         {
             $app->flash('success', 'Vous êtes désormais inscrit, bienvenue !');
-            $app->redirect('/');
+            $app->redirect('./');
         }
         else{
             $app->flash('error', 'Problème rencontré lors de l\'inscription ');

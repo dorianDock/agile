@@ -74,7 +74,7 @@ class User extends Model{
 		// On regarde si l'utilisateur en question existe.
 		// Si oui, l'index pourra prendre les bonnes décisions
 		$req = $this->db()->prepare("
-				SELECT * FROM user WHERE mail = ".$post['email']." AND mdp = ".$post['password']
+				SELECT * FROM user WHERE mail = '".$post['email']."' AND mdp = '".$post['password']."'"
 			);
 		$req->execute();
 		$res=$req->fetch();
@@ -98,8 +98,8 @@ class User extends Model{
 		$_SESSION['id']=$lastId;
 		$_SESSION['nom']=$post['nom'];
 		$_SESSION['prenom']=$post['prenom'];
-		$_SESSION['isAdmin']=$post['isAdmin'];
-		$_SESSION['isResponsable']=$post['isResponsable'];
+		//$_SESSION['isAdmin']=$post['isAdmin'];
+		//$_SESSION['isResponsable']=$post['isResponsable'];
 
 		return true;
 	}

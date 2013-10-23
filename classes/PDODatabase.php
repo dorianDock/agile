@@ -7,21 +7,21 @@ class PDODatabase{
     const CONNECTION_TYPE = 'mysql';
     //const CONNECTION_TYPE = 'pgsql';
     
-    const DEFAULT_SQL_USER = 'u769120773_agile';
+    /*const DEFAULT_SQL_USER = 'u769120773_agile';
     
     const DEFAULT_SQL_HOST = 'localhost';
     
     const DEFAULT_SQL_PASS = 'isic_2014';
         
-    const DEFAULT_SQL_DTB = 'u769120773_agile';
+    const DEFAULT_SQL_DTB = 'u769120773_agile';*/
 	
-	/*const DEFAULT_SQL_USER = 'root';
+	const DEFAULT_SQL_USER = 'root';
     
     const DEFAULT_SQL_HOST = 'localhost';
     
     const DEFAULT_SQL_PASS = '';
         
-    const DEFAULT_SQL_DTB = 'agile';*/
+    const DEFAULT_SQL_DTB = 'agile';
 
     public static function getInstance() {
         if (is_null(self::$instance)) {            
