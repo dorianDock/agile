@@ -79,16 +79,20 @@ class User {
 	public function inscrire($post){
 		// On ajoute l'utilisateur en base
 		$req = $this->db()->prepare("
-				INSERT INTO user VALUES ()
+				INSERT INTO user VALUES ('', '".$post['mail']."','".$post['mdp']."','".$post['nom']."','".$post['prenom']."',
+					'".$post['isAdmin']."','".$post['isResponsable']."')
 			");
 		$req->execute();
-		$res=$req->fetch();
-		if(count($res)>0){
-			return true;
-		}
-		else {
-			return false;
-		}
+		// On récupère maintenant le dernier id inséré
+		$lastId=$this->db()->lastInsertId();
+		$_SESSION['id']=$lastId;
+		$_SESSION['nom']=$post['nom'];
+		$_SESSION['prenom']=$post['prenom'];
+		$_SESSION['isAdmin']=$post['isAdmin'];
+		$_SESSION['isResponsable']=$post['isResponsable'];
+
+
+		
 	}
 
 
