@@ -20,7 +20,8 @@ require 'Slim/Slim.php';
  */
 $app = new \Slim\Slim();
 
-
+require_once 'model/User.php';
+require_once 'model/Post.php';
 //$db = new PDO('mysql:host=localhost;dbname=agile', 'userName', 'password');
 
 /**
@@ -46,12 +47,15 @@ $app->get('/pipeau/:name',
 
 // GET route
 $app->get('/insert/', function() use($app){
-		$app->render('insertPost.php');
+		$app->render('insertPostForm.php');
 	}
 );
 
 // GET route
 $app->post('/insertPost/', function() use($app){
+		$postToInsert = new Post();
+		$postToInsert.setId_auteur($app->request->post('idUser'));
+		$postToInsert.setMessage($app->request->post('message'));
 		echo $app->request->post('message');
 		$app->render('insertPost.php');
 	}
