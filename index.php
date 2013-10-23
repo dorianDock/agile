@@ -66,9 +66,12 @@ $app->get('/insert/', function() use($app){
 // GET route
 $app->post('/insertPost/', function() use($app){
 		$postToInsert = new Post();
-		$postToInsert.setId_auteur($app->request->post('idUser'));
-		$postToInsert.setMessage($app->request->post('message'));
-		echo $app->request->post('message');
+		$array = array(
+				'idAuteur' => 1,
+				'titre' => $app->request->post('titre'),
+				'message' => $app->request->post('message')
+		);
+		$postToInsert.createNew($array);
 		$app->render('insertPost.php');
 	}
 );
