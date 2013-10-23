@@ -133,20 +133,21 @@ $app->get('/who-we-are/',
 
 $app->get('/connexion',
     function () use ($app) {
-        if(isset($_POST['email']) && isset($_POST['password'])){
-            $user = new User();
-            if($user->connexion($_POST))
-            {
-                $app->flash('success', 'Vous êtes désormais connecté !');
-                $app->redirect('/');
-            }
-            else{
-                $app->flash('error', 'Problème de connexion');
-            }
+        $user = new User();
+        if($user->connexion($_POST))
+        {
+            $app->flash('success', 'Vous êtes désormais connecté !');
+            $app->redirect('/');
         }
-        else {
-            $app->render('connexion.php');
+        else{
+            $app->flash('error', 'Problème de connexion');
         }
+    }
+);
+
+$app->post('/connexion',
+    function () use ($app) {
+        $app->render('connexion.php');
     }
 );
 
@@ -171,49 +172,6 @@ $app->post('/inscription',
             $app->flash('error', 'Problème rencontré lors de l\'inscription ');
         }
     });
-
-$app->get('/connexion',
-    function () use ($app) {
-        if(isset($_POST['email']) && isset($_POST['password'])){
-            $user = new User();
-            if($user->connexion($_POST))
-            {
-                $app->flash('success', 'Vous êtes désormais connecté !');
-                $app->flash('success', 'Vous Ãªtes dÃ©sormais connectÃ© !');
-                $app->redirect('/');
-            }
-            else{
-                $app->flash('error', 'ProblÃ¨me de connexion');
-            }
-        }
-        else {
-            $app->render('connexion.php');
-        }
-    }
-);
-
-
-$app->get('/inscription',
-    function () use ($app) {
-        if(isset($_POST['email']) && isset($_POST['password'])){
-            // Le form a Ã©tÃ© validÃ©
-            $user = new User();
-            if($user->inscrire($_POST))
-            {
-                $app->flash('success', 'Vous Ãªtes dÃ©sormais inscrit, bienvenue !');
-                $app->redirect('/');
-            }
-            else{
-                $app->flash('error', 'ProblÃ¨me rencontrÃ© lors de l\'inscription ');
-            }
-        }
-        else {
-            // le form n'est pas validÃ©, on est en consultation, on l'affiche simplement
-            $app->render('inscription.php');
-        }
-    }
-);
-
 
 // POST route
 $app->post(
