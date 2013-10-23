@@ -9,6 +9,7 @@
  */
 require 'Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
+require 'View/myView.php';
 
 /**
  * Step 2: Instantiate a Slim application
@@ -18,7 +19,13 @@ require 'Slim/Slim.php';
  * your Slim application now by passing an associative array
  * of setting names and values into the application constructor.
  */
-$app = new \Slim\Slim();
+ 
+ $myView=new MyView();
+ $myView::set_layout('defaultView.php');
+ 
+$app = new \Slim\Slim(array(
+    'view' => $myView
+));
 
 require_once 'model/User.php';
 require_once 'model/Post.php';
