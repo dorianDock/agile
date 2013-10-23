@@ -67,6 +67,7 @@ $app->get('/updatePost/:idPost', function() use($app){
 	}
 );
 
+
 // GET route
 $app->post('/insertPost/', function() use($app){
 		$array = array(
