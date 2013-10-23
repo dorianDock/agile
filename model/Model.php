@@ -4,7 +4,7 @@
         protected $values;
 
         public function setId($id){
-        	$this->values['ID_'.static::$table] = $id;
+        	$this->values['id'] = $id;
         }
         
         public function getId(){
@@ -29,7 +29,7 @@
         
         public function read($fields=null){
             if($fields == null){ $fields = "*"; }
-            $sql = "SELECT $fields FROM ".static::$table.' WHERE ID_'.static::$table.' = '.$this->values['ID_'.static::$table];
+            $sql = "SELECT $fields FROM ".static::$table.' WHERE id'.static::$table.' = '.$this->values['id'];
             $res = self::db()->query($sql);
             $res2 = $res->fetch(PDO::FETCH_ASSOC);
             if($res->rowCount() > 0){
