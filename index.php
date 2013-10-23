@@ -20,6 +20,9 @@ require 'Slim/Slim.php';
  */
 $app = new \Slim\Slim();
 
+
+$db = new PDO('mysql:host=localhost;dbname=test', $user, $pass);
+
 /**
  * Step 3: Define the Slim application routes
  *
