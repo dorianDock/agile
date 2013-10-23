@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.png">
 
-    <title>Justified Nav Template for Bootstrap</title>
+    <title>Avis citoyen</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
@@ -27,46 +27,43 @@
     <div class="container">
 
       <div class="masthead">
-        <h3 class="text-muted">Project name</h3>
+        <!--<h3 class="text-muted">Avis citoyen</h3>-->
         <ul class="nav nav-justified">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Downloads</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li class="active"><a href="#">Accueil</a></li>
+          <li><a href="#">Toutes les idées</a></li>
+          <li><a href="#">Qui sommes-nous ?</a></li>
         </ul>
       </div>
 
       <!-- Jumbotron -->
       <div class="jumbotron">
-        <h1>Marketing stuff!</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-        <p><a class="btn btn-lg btn-success" href="#">Get started today</a></p>
+        <h1>Avis citoyen</h1>
+        <p class="lead">Le site où vous pourrez enfin donner votre avis !</p>
+        <p><a class="btn btn-lg btn-success" href="#">Je veux m'incrire !</a></p>
       </div>
 
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+          <h2>Salles accessibles à n'importe quel moment à la Meud ?</h2>
+          <p>Que diriez-vous si des salles étaient accessibles à n'importe quel moment pour se réunir ? Actuellement il faut envoyer un mail la veille et la procédure est longue...</p>
+          <p><a class="btn btn-primary" href="#">Lire plus &raquo;</a></p>
         </div>
         <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
+          <h2>Du fromage à la cantine ?</h2>
+          <p>On y a jamais droit et il y en a qui ont des carences en calcium...</p>
+          <p><a class="btn btn-primary" href="#">Lire plus &raquo;</a></p>
        </div>
         <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+          <h2>Des pizzas tous les Mercredis midi à la cantine ?</h2>
+          <p>Parce que j'ai faim personnellement.</p>
           <p><a class="btn btn-primary" href="#">View details &raquo;</a></p>
         </div>
       </div>
 
       <!-- Site footer -->
       <div class="footer">
-        <p>&copy; Company 2013</p>
+        <p>&copy; Mines Douai 2013</p>
       </div>
 
     </div> <!-- /container -->
