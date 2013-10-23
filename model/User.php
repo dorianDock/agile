@@ -1,7 +1,9 @@
 <?php
-class User {
-	private $id, $mail, $mdp, $nom, $prenom, $isAdmin;
-
+require_once 'Model.php';
+class User extends Model{
+	private $id, $mail, $mdp, $nom, $prenom, $isAdmin, $isResponsable;
+	protected static $table = 'User';
+	
 	public function getMail(){
 		return $this->mail;
 	}
@@ -23,6 +25,9 @@ class User {
 	public function getIsAdmin(){
 		return $this->isAdmin;
 	}
+	public function getIsResponsable(){
+		return $this->isResponsable;
+	}
 
 	public function setMail($unMail){
 		$this->mail= $unMail;
@@ -42,6 +47,9 @@ class User {
 	}
 	public function setIsAdmin($isAdmin){
 		$this->isAdmin= $isAdmin;
+	}
+	public function setIsResponsable($isResponsable){
+		$this->isResponsable = $isResponsable;
 	}
 
 	public function hydraterSession(){

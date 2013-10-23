@@ -28,6 +28,7 @@ $app = new \Slim\Slim(array(
     'view' => $myView
 ));
 
+require_once 'model/Model.php';
 require_once 'model/User.php';
 require_once 'model/Post.php';
 
@@ -46,13 +47,6 @@ $app->config(array(
 ));
 
 // GET route
-$app->get('/pipeau/:name',
-    function ($name) use ($app) {
-        $app->render('vue.php', array('name'=>$name));
-    }
-);
-
-
 $app->get('/idees',
     function ($name) use ($app) {
         require_once 'Models/idees.php';
@@ -96,10 +90,16 @@ $app->get('/',
 
 $app->get('/post/voter/:postId/:vote',
     function ($postId, $vote) use ($app) {
-        $user = new User();
-        $user->hydraterSession();
-        $user->voter($postId, $vote);
-        $app->redirect('/post/'.$postId);
+    	if($vote != 1 && $vote != -1){
+    		return;
+    	}
+    	$array = array(
+    			'idUser' => 1,
+    			'idPost' => $postId,
+    			'value' => $vote
+    	);
+        Vote::createNew($array);
+        $app->render('idees.php');
     }
 );
 
@@ -108,6 +108,7 @@ $app->get('/who-we-are/',
         $app->render('whoWeAre.php');
     }
 );
+
 $app->get('/connexion',
     function () use ($app) {
         if(isset($_POST['email']) && isset($_POST['password'])){
@@ -145,6 +146,66 @@ $app->get('/inscription',
         else {
             // le form n'est pas validé, on est en consultation, on l'affiche simplement
             $app->render('inscription.php');
+        }
+    }
+);
+
+$app->get('/connexion',
+    function () use ($app) {
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            $user = new User();
+            if($user->connexion($_POST))
+            {
+                $app->flash('success', 'Vous êtes désormais connecté !');
+                $app->redirect('/');
+            }
+            else{
+                $app->flash('error', 'Problème de connexion');
+            }
+        }
+        else {
+            $app->render('connexion.php');
+        }
+    }
+);
+
+
+$app->get('/inscription',
+    function () use ($app) {
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            // Le form a été validé
+            $user = new User();
+            if($user->inscrire($_POST))
+            {
+                $app->flash('success', 'Vous êtes désormais inscrit, bienvenue !');
+                $app->redirect('/');
+            }
+            else{
+                $app->flash('error', 'Problème rencontré lors de l\'inscription ');
+            }
+        }
+        else {
+            // le form n'est pas validé, on est en consultation, on l'affiche simplement
+            $app->render('inscription.php');
+        }
+    }
+);
+
+$app->get('/connexion',
+    function () use ($app) {
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            $user = new User();
+            if($user->connexion($_POST))
+            {
+                $app->flash('success', 'Vous êtes désormais connecté !');
+                $app->redirect('/');
+            }
+            else{
+                $app->flash('error', 'Problème de connexion');
+            }
+        }
+        else {
+            $app->render('connexion.php');
         }
     }
 );
