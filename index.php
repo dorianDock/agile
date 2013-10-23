@@ -28,6 +28,7 @@ $app = new \Slim\Slim(array(
     'view' => $myView
 ));
 
+require_once 'model/Model.php';
 require_once 'model/User.php';
 require_once 'model/Post.php';
 
