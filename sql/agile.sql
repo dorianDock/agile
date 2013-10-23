@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 23 Octobre 2013 à 10:59
+-- Généré le: Mer 23 Octobre 2013 à 14:46
 -- Version du serveur: 5.6.10
 -- Version de PHP: 5.3.15
 
@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `nom` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `prenom` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `isAdmin` smallint(1) NOT NULL DEFAULT '0',
+  `isResponsable` smallint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mail` (`mail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
