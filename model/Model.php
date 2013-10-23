@@ -74,7 +74,7 @@
         }
         
         public function delete(){
-        	$sql = "DELETE FROM ".static::$table." WHERE ID_".static::$table." = ".$this->getId();
+        	$sql = "DELETE FROM ".static::$table." WHERE id".static::$table." = ".$this->getId();
         	self::db()->query($sql); //Ligne indispensable, contre toute attente, pour que la requête s'exécute. Merde. Je m'excuse mais merde.
         }
         
