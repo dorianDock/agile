@@ -47,13 +47,6 @@ $app->config(array(
 ));
 
 // GET route
-$app->get('/pipeau/:name',
-    function ($name) use ($app) {
-        $app->render('vue.php', array('name'=>$name));
-    }
-);
-
-
 $app->get('/idees',
     function ($name) use ($app) {
         require_once 'Models/idees.php';
