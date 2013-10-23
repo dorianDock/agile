@@ -102,6 +102,11 @@ $app->get('/post/voter/:postId/:vote',
     }
 );
 
+$app->get('/who-we-are/',
+    function () use ($app) {
+        $app->render('whoWeAre.php');
+    }
+);
 
 // POST route
 $app->post(
