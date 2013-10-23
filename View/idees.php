@@ -19,7 +19,7 @@ foreach($idees as $idee) {
     echo 'proposition: '.$valeur["titre"]. '<br/>
         détail: '.$valeur["message"];
     if(isset($_SESSION['isAdmin']) AND $_SESSION['isAdmin']){
-    	echo '<br/><a href="/post/moderer/supprimer/'.$valeur['id'].'">Supprimer</a>';
+    	echo '<br/><a href="post/moderer/supprimer/'.$valeur['id'].'">Supprimer</a>';
     }
 }
 ?>

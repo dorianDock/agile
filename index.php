@@ -75,7 +75,7 @@ $app->post('/insertPost/', function() use($app){
 				'message' => $app->request->post('message')
 		);
 		Post::createNew($array);
-		$app->redirect('/idees');
+		$app->redirect('idees');
 	}
 );
 
@@ -117,7 +117,7 @@ $app->get('/post/moderer/supprimer/:postId/',
 
 			echo $postId;
 			Post::delete($postId);
-			$app->redirect('/idees');
+			$app->redirect('idees');
 		}
 );
 
