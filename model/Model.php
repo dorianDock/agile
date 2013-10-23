@@ -3,6 +3,10 @@
         protected static $table;
         protected $values;
 
+        public function getValues(){
+        	return $this->values;
+        }
+        
         public function setId($id){
         	$this->values['id'] = $id;
         }
@@ -11,7 +15,7 @@
         	return $this->values['ID_'.static::$table];
         }
         
-        /*public function __construct($infos){
+        public function __construct($infos){
         	if(is_array($infos) AND count($infos)>0){
         		$this->values = $infos;
         	}
@@ -20,7 +24,7 @@
         		$this->setId($infos);
         		$this->read();
         	}
-        }*/
+        }
         
         public static function esc($obj){
             return nl2br(htmlspecialchars(addslashes($obj)));
@@ -73,8 +77,9 @@
         	return $id;
         }
         
-        public function delete(){
-        	$sql = "DELETE FROM ".static::$table." WHERE id".static::$table." = ".$this->getId();
+        public static function delete($id){
+        	$sql = "DELETE FROM ".static::$table." WHERE id = ".$id;
+        	echo $sql;
         	self::db()->query($sql); //Ligne indispensable, contre toute attente, pour que la requête s'exécute. Merde. Je m'excuse mais merde.
         }
         

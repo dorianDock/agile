@@ -1,27 +1,8 @@
 <?php
 class Post extends Model {
     	protected static $table = 'post';
-        private $titre, $id, $idAuteur, $message, $idPostParent;
-        protected $values;
+        private $titre, $id, $idAuteur, $message, $idPostParent;  
     
-    public static function getAll(){
-        $result = $db->query("select * from post");
-            $res = $db->query("select * from post");
-            $result = array();
-            while($res2 = $res->fetch(PDO::FETCH_ASSOC)){
-                $result[] = new static($res2);
-            }
-    }
-    
-    public function getValues(){
-        return $this->values;
-    }
-    
-    
-    
-    
-    
-	// private $id, $id_auteur, $id_postParent, $titre, $message;
 
 	public function getId(){
 		return $this->id;

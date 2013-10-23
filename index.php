@@ -49,7 +49,6 @@ $app->config(array(
 // GET route
 $app->get('/idees',
     function () use ($app) {
-        require_once 'Model/Post.php';
        // $idees  = new Post();
         //$result =$idees->getAll();
         
@@ -58,12 +57,6 @@ $app->get('/idees',
        // $votes->getVotesByPost();
         $app->render('idees.php', array('idees'=>$result));
     }
-);
-
-// GET route
-$app->get('/insert/', function() use($app){
-		$app->render('insertPostForm.php', array('userId' => 1));
-	}
 );
 
 $app->get('/updatePost/:idPost', function($idPost) use($app){
@@ -82,7 +75,7 @@ $app->post('/insertPost/', function() use($app){
 				'message' => $app->request->post('message')
 		);
 		Post::createNew($array);
-		$app->render('index.php');
+		$app->redirect('/idees');
 	}
 );
 
@@ -121,7 +114,10 @@ $app->get('/post/moderer/editer/:postId/',
 
 $app->get('/post/moderer/supprimer/:postId/',
 		function ($postId) use ($app) {
+
+			echo $postId;
 			Post::delete($postId);
+			$app->redirect('/idees');
 		}
 );
 
