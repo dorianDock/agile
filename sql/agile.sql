@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.10.1
+-- version 4.0.0-beta1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Oct 23, 2013 at 08:47 AM
--- Server version: 5.5.20
--- PHP Version: 5.3.10
+-- Client: localhost
+-- Généré le: Mer 23 Octobre 2013 à 10:59
+-- Version du serveur: 5.6.10
+-- Version de PHP: 5.3.15
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,27 +17,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `agile`
+-- Base de données: `agile`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
+-- Structure de la table `post`
 --
 
 CREATE TABLE IF NOT EXISTS `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAuteur` int(11) NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL,
+  `idPostParent` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `idAuteur` (`idAuteur`)
+  KEY `idAuteur` (`idAuteur`),
+  KEY `idPostParent` (`idPostParent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Structure de la table `user`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
@@ -54,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vote`
+-- Structure de la table `vote`
 --
 
 CREATE TABLE IF NOT EXISTS `vote` (
@@ -68,17 +70,18 @@ CREATE TABLE IF NOT EXISTS `vote` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Constraints for table `post`
+-- Contraintes pour la table `post`
 --
 ALTER TABLE `post`
+  ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`idPostParent`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`idAuteur`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `vote`
+-- Contraintes pour la table `vote`
 --
 ALTER TABLE `vote`
   ADD CONSTRAINT `vote_ibfk_2` FOREIGN KEY (`idPost`) REFERENCES `post` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
