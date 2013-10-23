@@ -98,8 +98,6 @@ class User extends Model{
 		$_SESSION['prenom']=$post['prenom'];
 		$_SESSION['isAdmin']=$post['isAdmin'];
 		$_SESSION['isResponsable']=$post['isResponsable'];
-
-
 		
 	}
 
