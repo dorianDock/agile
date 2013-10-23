@@ -2,7 +2,7 @@
       <div class="jumbotron">
         <h1>Avis citoyen</h1>
         <p class="lead">Le site où vous pourrez enfin donner votre avis !</p>
-        <p><a class="btn btn-lg btn-success" href="inscription">Je veux m'inscrire !</a></p>
+        <p><a class="btn btn-lg btn-primary" href="connexion">Me connecter</a>  <a class="btn btn-lg btn-success" href="inscription">Je veux m'inscrire !</a></p>
       </div>
 
       <!-- Example row of columns -->
