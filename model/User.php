@@ -61,16 +61,42 @@ class User extends Model{
 
 	// Indiquer si oui ou non on soutient une idée
 	public function voter($postId, $soutien){
-		$this->db->prepare('
+		$req = $this->db()->prepare('
 				INSERT INTO Vote VALUES (\'\','.$this->id.','.$postId.','.$soutien.');
 			');
-		$this->db->execute();
+		$req->execute();
 
 	}
 
-	// Indiquer si oui ou non on soutient une idée
-	public function poster($titre, $message){
-			
+	public function connexion($post){
+		// On regarde si l'utilisateur en question existe.
+		// Si oui, l'index pourra prendre les bonnes décisions
+		$req = $this->db()->prepare("
+				SELECT * FROM user WHERE mail = ".$post['email']." AND mdp = ".$post['password']
+			);
+		$req->execute();
+		$res=$req->fetch();
+		if(count($res)>0){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public function inscrire($post){
+		// On ajoute l'utilisateur en base
+		$req = $this->db()->prepare("
+				INSERT INTO user VALUES ()
+			");
+		$req->execute();
+		$res=$req->fetch();
+		if(count($res)>0){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 
