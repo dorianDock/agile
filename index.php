@@ -9,6 +9,7 @@
  */
 require 'Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
+require 'View/myView.php';
 
 /**
  * Step 2: Instantiate a Slim application
@@ -18,11 +19,16 @@ require 'Slim/Slim.php';
  * your Slim application now by passing an associative array
  * of setting names and values into the application constructor.
  */
-$app = new \Slim\Slim();
+ 
+ $myView=new MyView();
+ $myView::set_layout('defaultView.php');
+ 
+$app = new \Slim\Slim(array(
+    'view' => $myView
+));
 
 require_once 'model/User.php';
 require_once 'model/Post.php';
-//$db = new PDO('mysql:host=localhost;dbname=agile', 'userName', 'password');
 
 /**
  * Step 3: Define the Slim application routes
@@ -61,17 +67,25 @@ $app->get('/idees',
 
 // GET route
 $app->get('/insert/', function() use($app){
-		$app->render('insertPostForm.php');
+		$app->render('insertPostForm.php', array('userId' => 1));
 	}
 );
 
+$app->get('/updatePost/:idPost', function() use($app){
+		$app->render('AmeliorerIdee.php');
+	}
+);
+
+
 // GET route
 $app->post('/insertPost/', function() use($app){
-		$postToInsert = new Post();
-		$postToInsert.setId_auteur($app->request->post('idUser'));
-		$postToInsert.setMessage($app->request->post('message'));
-		echo $app->request->post('message');
-		$app->render('insertPost.php');
+		$array = array(
+				'idAuteur' => 1,
+				'titre' => $app->request->post('titre'),
+				'message' => $app->request->post('message')
+		);
+		Post::createNew($array);
+		$app->render('index.php');
 	}
 );
 

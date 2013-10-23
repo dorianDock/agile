@@ -1,5 +1,6 @@
 <?php
-class User {
+require_once 'Model.php';
+class User extends Model{
 	private $id, $mail, $mdp, $nom, $prenom, $isAdmin;
 
 	public function getMail(){
@@ -61,9 +62,8 @@ class User {
 	}
 
 	// Indiquer si oui ou non on soutient une idée
-	public function ecrire($titre, $message){
-		
-	
+	public function poster($titre, $message){
+			
 	}
 
 
