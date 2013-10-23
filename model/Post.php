@@ -57,7 +57,6 @@ class Post extends Model {
 		$this->message= $unMessage;
 	}
 	
-<<<<<<< HEAD
 	public function getPost($idPost){
 		//var_dump($idPost);die();
 		$data = array('conditions'=> 'id=1');
@@ -65,12 +64,6 @@ class Post extends Model {
 		var_dump($result);die();
 		
 	}
-=======
-
-
-
-
->>>>>>> b54a68b35b1062fd657cd592bdeee75b09a9d9cf
 }
 
 ?>
