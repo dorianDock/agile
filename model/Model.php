@@ -2,7 +2,7 @@
     class Model{
         protected static $table;
         protected $values;
-		
+
         public function setId($id){
         	$this->values['ID_'.static::$table] = $id;
         }

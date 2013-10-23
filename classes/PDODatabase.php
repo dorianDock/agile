@@ -11,7 +11,7 @@ class PDODatabase{
     
     const DEFAULT_SQL_HOST = 'localhost';
     
-    const DEFAULT_SQL_PASS = 'mrleetrader92100';
+    const DEFAULT_SQL_PASS = '';
     
     const DEFAULT_SQL_DTB = 'agile';
 

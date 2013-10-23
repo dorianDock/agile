@@ -116,11 +116,11 @@ $app->get('/connexion',
             $user = new User();
             if($user->connexion($_POST))
             {
-                $app->flash('success', 'Vous êtes désormais connecté !');
+                $app->flash('success', 'Vous Ãªtes dÃ©sormais connectÃ© !');
                 $app->redirect('/');
             }
             else{
-                $app->flash('error', 'Problème de connexion');
+                $app->flash('error', 'ProblÃ¨me de connexion');
             }
         }
         else {
@@ -133,19 +133,19 @@ $app->get('/connexion',
 $app->get('/inscription',
     function () use ($app) {
         if(isset($_POST['email']) && isset($_POST['password'])){
-            // Le form a été validé
+            // Le form a Ã©tÃ© validÃ©
             $user = new User();
             if($user->inscrire($_POST))
             {
-                $app->flash('success', 'Vous êtes désormais inscrit, bienvenue !');
+                $app->flash('success', 'Vous Ãªtes dÃ©sormais inscrit, bienvenue !');
                 $app->redirect('/');
             }
             else{
-                $app->flash('error', 'Problème rencontré lors de l\'inscription ');
+                $app->flash('error', 'ProblÃ¨me rencontrÃ© lors de l\'inscription ');
             }
         }
         else {
-            // le form n'est pas validé, on est en consultation, on l'affiche simplement
+            // le form n'est pas validÃ©, on est en consultation, on l'affiche simplement
             $app->render('inscription.php');
         }
     }
