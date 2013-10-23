@@ -23,3 +23,7 @@
           <p><a class="btn btn-primary" href="#">Lire plus &raquo;</a></p>
         </div>
       </div>
+	  <script>
+		$("#accueil").addClass("active");
+	  </script>
+	  
