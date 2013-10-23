@@ -7,12 +7,12 @@ class PDODatabase{
     const CONNECTION_TYPE = 'mysql';
     //const CONNECTION_TYPE = 'pgsql';
     
-    const DEFAULT_SQL_USER = 'root';
+    const DEFAULT_SQL_USER = 'u769120773';
     
-    const DEFAULT_SQL_HOST = 'localhost';
+    const DEFAULT_SQL_HOST = '31.170.164.30';
     
-    const DEFAULT_SQL_PASS = 'mrleetrader92100';
-    
+    const DEFAULT_SQL_PASS = 'isic_2014';
+        
     const DEFAULT_SQL_DTB = 'agile';
 
     public static function getInstance() {

@@ -69,7 +69,9 @@ $app->get('/insert/', function() use($app){
 	}
 );
 
-$app->get('/updatePost/:idPost', function() use($app){
+$app->get('/updatePost/:idPost', function($idPost) use($app){
+		$idee = new Post();
+		$idee->getPost($idPost);
 		$app->render('AmeliorerIdee.php');
 	}
 );

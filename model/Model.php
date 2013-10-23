@@ -11,7 +11,7 @@
         	return $this->values['ID_'.static::$table];
         }
         
-        public function __construct($infos){
+        /*public function __construct($infos){
         	if(is_array($infos) AND count($infos)>0){
         		$this->values = $infos;
         	}
@@ -20,7 +20,7 @@
         		$this->setId($infos);
         		$this->read();
         	}
-        }
+        }*/
         
         public static function esc($obj){
             return nl2br(htmlspecialchars(addslashes($obj)));

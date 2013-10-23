@@ -36,6 +36,14 @@ class Post extends Model{
 	public function setMessage($unMessage){
 		$this->message= $unMessage;
 	}
+	
+	public function getPost($idPost){
+		//var_dump($idPost);die();
+		$data = array('conditions'=> 'id=1');
+		$result = $this->find($data);
+		var_dump($result);die();
+		
+	}
 }
 
 ?>
