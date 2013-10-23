@@ -20,7 +20,8 @@ require 'Slim/Slim.php';
  */
 $app = new \Slim\Slim();
 
-
+require_once 'model/User.php';
+require_once 'model/Post.php';
 //$db = new PDO('mysql:host=localhost;dbname=agile', 'userName', 'password');
 
 /**
@@ -56,11 +57,37 @@ $app->get('/idees',
     }
 );
 
+// GET route
+$app->get('/insert/', function() use($app){
+		$app->render('insertPostForm.php');
+	}
+);
+
+// GET route
+$app->post('/insertPost/', function() use($app){
+		$postToInsert = new Post();
+		$postToInsert.setId_auteur($app->request->post('idUser'));
+		$postToInsert.setMessage($app->request->post('message'));
+		echo $app->request->post('message');
+		$app->render('insertPost.php');
+	}
+);
+
 $app->get('/',
     function () use ($app) {
         $app->render('accueil.php');
     }
 );
+
+$app->get('/post/voter/:postId/:vote',
+    function ($postId, $vote) use ($app) {
+        $user = new User();
+        $user->hydraterSession();
+        $user->voter($postId, $vote);
+        $app->redirect('/post/'.$postId);
+    }
+);
+
 
 // POST route
 $app->post(
