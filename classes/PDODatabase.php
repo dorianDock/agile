@@ -12,7 +12,7 @@ class PDODatabase{
     const DEFAULT_SQL_HOST = 'localhost';
     
     const DEFAULT_SQL_PASS = 'isic_2014';
-        
+
     const DEFAULT_SQL_DTB = 'u769120773_agile';
 
     public static function getInstance() {

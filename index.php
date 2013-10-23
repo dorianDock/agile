@@ -76,7 +76,7 @@ $app->post('/insertPost/', function() use($app){
 				'message' => $app->request->post('message')
 		);
 		Post::createNew($array);
-		$app->redirect('/idees');
+		$app->redirect('idees');
 	}
 );
 
@@ -118,7 +118,7 @@ $app->get('/post/moderer/supprimer/:postId/',
 
 			echo $postId;
 			Post::delete($postId);
-			$app->redirect('/idees');
+			$app->redirect('idees');
 		}
 );
 
@@ -134,7 +134,7 @@ $app->post('/connexion',
         if($user->connexion($_POST))
         {
             $app->flash('success', 'Vous êtes désormais connecté !');
-            $app->redirect('/');
+            $app->redirect('./');
         }
         else{
             $app->flash('error', 'Problème de connexion');
@@ -163,7 +163,7 @@ $app->post('/inscription',
         if($user->inscrire($_POST))
         {
             $app->flash('success', 'Vous êtes désormais inscrit, bienvenue !');
-            $app->redirect('/');
+            $app->redirect('./');
         }
         else{
             $app->flash('error', 'Problème rencontré lors de l\'inscription ');

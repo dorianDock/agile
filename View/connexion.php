@@ -3,7 +3,7 @@ if(isset($flash['success'])){
   echo '<div class="alert alert-success">'.$flash['success'].'</div>';
 } 
 ?>
-<form role="form" action="/connexion">
+<form role="form" action="" method="POST">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" name="email" placeholder="Enter email">

@@ -10,7 +10,7 @@ foreach($idees as $idee) {
     	echo '<br/><a href="/post/voter/'.$valeur['id'].'/1">J\'aime</a><a href="/post/voter/'.$valeur['id'].'/-1">Je n\'aime pas</a>';
     }
     if(isset($_SESSION['isAdmin']) AND $_SESSION['isAdmin']){
-    	echo '<br/><a href="/post/moderer/supprimer/'.$valeur['id'].'">Supprimer</a>';
+    	echo '<br/><a href="post/moderer/supprimer/'.$valeur['id'].'">Supprimer</a>';
     }
 }
 ?>
