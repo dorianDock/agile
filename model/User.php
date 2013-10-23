@@ -54,7 +54,7 @@ class User {
 	// Indiquer si oui ou non on soutient une idée
 	public function voter($postId, $soutien){
 		$this->db->prepare('
-				INSERT INTO Vote VALUES ('','.$this->id.','.$postId.','.$soutien.');
+				INSERT INTO Vote VALUES (\'\','.$this->id.','.$postId.','.$soutien.');
 			');
 		$this->db->execute();
 
