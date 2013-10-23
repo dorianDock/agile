@@ -63,6 +63,11 @@ $app->get('/insert/', function() use($app){
 	}
 );
 
+$app->get('/updatePost/:idPost', function() use($app){
+		$app->render('AmeliorerIdee.php');
+	}
+);
+
 // GET route
 $app->post('/insertPost/', function() use($app){
 		$postToInsert = new Post();

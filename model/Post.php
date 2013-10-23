@@ -35,11 +35,6 @@ class Post {
 	public function setMessage($unMessage){
 		$this->message= $unMessage;
 	}
-	
-
-
-
-
 }
 
 ?>
