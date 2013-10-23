@@ -1,5 +1,6 @@
 <?php
-class Post {
+require_once 'Model.php';
+class Post extends Model{
 	private $id, $id_auteur, $id_postParent, $titre, $message;
 	public static $table = "Post";
 	

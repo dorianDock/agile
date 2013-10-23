@@ -124,7 +124,7 @@
         }
         
         protected static function db(){
-            require_once('../classes/PDODatabase.php');
+            require_once('classes/PDODatabase.php');
             return PDODatabase::getInstance();
         }
 		

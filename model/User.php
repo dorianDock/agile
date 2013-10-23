@@ -1,4 +1,5 @@
 <?php
+require_once 'Model.php';
 class User extends Model{
 	private $id, $mail, $mdp, $nom, $prenom, $isAdmin;
 

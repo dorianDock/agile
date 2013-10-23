@@ -22,7 +22,6 @@ $app = new \Slim\Slim();
 
 require_once 'model/User.php';
 require_once 'model/Post.php';
-//$db = new PDO('mysql:host=localhost;dbname=agile', 'userName', 'password');
 
 /**
  * Step 3: Define the Slim application routes
@@ -59,7 +58,7 @@ $app->get('/idees',
 
 // GET route
 $app->get('/insert/', function() use($app){
-		$app->render('insertPostForm.php');
+		$app->render('insertPostForm.php', array('userId' => 1));
 	}
 );
 
@@ -70,14 +69,13 @@ $app->get('/updatePost/:idPost', function() use($app){
 
 // GET route
 $app->post('/insertPost/', function() use($app){
-		$postToInsert = new Post();
 		$array = array(
 				'idAuteur' => 1,
 				'titre' => $app->request->post('titre'),
 				'message' => $app->request->post('message')
 		);
-		$postToInsert.createNew($array);
-		$app->render('insertPost.php');
+		Post::createNew($array);
+		$app->render('index.php');
 	}
 );
 

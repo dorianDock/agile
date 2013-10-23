@@ -11,9 +11,9 @@ class PDODatabase{
     
     const DEFAULT_SQL_HOST = 'localhost';
     
-    const DEFAULT_SQL_PASS = '';
+    const DEFAULT_SQL_PASS = 'mrleetrader92100';
     
-    const DEFAULT_SQL_DTB = 'web01';
+    const DEFAULT_SQL_DTB = 'agile';
 
     public static function getInstance() {
         if (is_null(self::$instance)) {            
