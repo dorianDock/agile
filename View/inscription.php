@@ -1,4 +1,4 @@
-      <form class="form-signin">
+      <form class="form-signin" method="POST" action="inscription">
         <h2 class="form-signin-heading">Remplissez les champs suivants</h2>
         <input name="mail" type="text" class="form-control" placeholder="Adresse mail" autofocus>
         <input name="mdp" type="password" class="form-control" placeholder="Mot de passe">

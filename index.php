@@ -131,7 +131,7 @@ $app->get('/connexion',
 
 $app->get('/inscription',
     function () use ($app) {
-        if(isset($_POST['email']) && isset($_POST['password'])){
+        if(isset($_POST['mail']) && isset($_POST['mdp'])){
             // Le form a été validé
             $user = new User();
             if($user->inscrire($_POST))
@@ -142,6 +142,7 @@ $app->get('/inscription',
             else{
                 $app->flash('error', 'Problème rencontré lors de l\'inscription ');
             }
+			$app->redirect("/");
         }
         else {
             // le form n'est pas validé, on est en consultation, on l'affiche simplement
