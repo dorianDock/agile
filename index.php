@@ -47,13 +47,15 @@ $app->get('/pipeau/:name',
 
 
 $app->get('/idees',
-    function ($name) use ($app) {
-        require_once 'Models/Post.php';
-        $idees = new Post();
-        $idees->getAll();
-        $votes = new Votes ($idees);
-        $votes->getVotesByPost();
-        $app->render('idees.php', array('idees'=>$idees));
+    function () use ($app) {
+        require_once 'Model/Post.php';
+       // $idees  = new Post();
+        //$result =$idees->getAll();
+        
+        $result = Post::find(array());
+        //$votes = new Votes ($idees);
+       // $votes->getVotesByPost();
+        $app->render('idees.php', array('idees'=>$result));
     }
 );
 
