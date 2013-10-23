@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idAuteur` int(11) NOT NULL,
+  `titre` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `message` text COLLATE utf8_unicode_ci NOT NULL,
   `idPostParent` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),

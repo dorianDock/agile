@@ -48,9 +48,11 @@ $app->get('/pipeau/:name',
 $app->get('/idees',
     function ($name) use ($app) {
         require_once 'Models/idees.php';
-        $ideas = new Idees;
-        $ideas->getAll();       
-        $app->render('idees.php', array('idees'=>$ideas));
+        $idees = new Idees();
+        $idees->getAll();
+        $votes = new Votes ($idees);
+        $votes->getVotesByPost();
+        $app->render('idees.php', array('idees'=>$idees));
     }
 );
 
