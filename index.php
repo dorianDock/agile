@@ -67,6 +67,16 @@ $app->get('/',
     }
 );
 
+$app->get('/post/voter/:postId/:vote',
+    function ($postId, $vote) use ($app) {
+        $user = new User();
+        $user->hydraterSession();
+        $user->voter($postId, $vote);
+        $app->redirect('/post/'.$postId);
+    }
+);
+
+
 // POST route
 $app->post(
     '/post',
