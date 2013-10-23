@@ -32,7 +32,7 @@
         <!--<h3 class="text-muted">Avis citoyen</h3>-->
         <ul class="nav nav-justified">
           <li id="accueil"><a href="index.php">Accueil</a></li>
-          <li id="idees"><a href="#">Toutes les idées</a></li>
+          <li id="idees"><a href="idees">Toutes les idées</a></li>
           <li id="qui-sommes-nous"><a href="who-we-are">Qui sommes-nous ?</a></li>
         </ul>
       </div>
