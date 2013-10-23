@@ -153,25 +153,24 @@ $app->get('/connexion',
 
 $app->get('/inscription',
     function () use ($app) {
-        if(isset($_POST['mail']) && isset($_POST['mdp'])){
-            // Le form a été validé
-            $user = new User();
-            if($user->inscrire($_POST))
-            {
-                $app->flash('success', 'Vous êtes désormais inscrit, bienvenue !');
-                $app->redirect('/');
-            }
-            else{
-                $app->flash('error', 'Problème rencontré lors de l\'inscription ');
-            }
-			$app->redirect("/");
-        }
-        else {
-            // le form n'est pas validé, on est en consultation, on l'affiche simplement
-            $app->render('inscription.php');
-        }
+        // le form n'est pas validé, on est en consultation, on l'affiche simplement
+        $app->render('inscription.php');
     }
 );
+
+$app->post('/inscription',
+    function () use ($app) {
+        // Le form a été validé
+        $user = new User();
+        if($user->inscrire($_POST))
+        {
+            $app->flash('success', 'Vous êtes désormais inscrit, bienvenue !');
+            $app->redirect('/');
+        }
+        else{
+            $app->flash('error', 'Problème rencontré lors de l\'inscription ');
+        }
+    });
 
 $app->get('/connexion',
     function () use ($app) {
