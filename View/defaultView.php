@@ -29,9 +29,9 @@
       <div class="masthead">
         <!--<h3 class="text-muted">Avis citoyen</h3>-->
         <ul class="nav nav-justified">
-          <li class="active"><a href="#">Accueil</a></li>
-          <li><a href="#">Toutes les idées</a></li>
-          <li><a href="#">Qui sommes-nous ?</a></li>
+          <li id="accueil"><a href="index.php">Accueil</a></li>
+          <li id="idees"><a href="#">Toutes les idées</a></li>
+          <li id="qui-sommes-nous"><a href="who-we-are">Qui sommes-nous ?</a></li>
         </ul>
       </div>
 

@@ -109,6 +109,53 @@ $app->get('/post/voter/:postId/:vote',
     }
 );
 
+$app->get('/who-we-are/',
+    function () use ($app) {
+        $app->render('whoWeAre.php');
+    }
+);
+$app->get('/connexion',
+    function () use ($app) {
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            $user = new User();
+            if($user->connexion($_POST))
+            {
+                $app->flash('success', 'Vous êtes désormais connecté !');
+                $app->redirect('/');
+            }
+            else{
+                $app->flash('error', 'Problème de connexion');
+            }
+        }
+        else {
+            $app->render('connexion.php');
+        }
+    }
+);
+
+
+$app->get('/inscription',
+    function () use ($app) {
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            // Le form a été validé
+            $user = new User();
+            if($user->inscrire($_POST))
+            {
+                $app->flash('success', 'Vous êtes désormais inscrit, bienvenue !');
+                $app->redirect('/');
+            }
+            else{
+                $app->flash('error', 'Problème rencontré lors de l\'inscription ');
+            }
+        }
+        else {
+            // le form n'est pas validé, on est en consultation, on l'affiche simplement
+            $app->render('inscription.php');
+        }
+    }
+);
+<<<<<<< HEAD
+
 $app->get('/connexion',
     function () use ($app) {
         if(isset($_POST['email']) && isset($_POST['password'])){
@@ -396,46 +443,6 @@ $app->get('/inscription',
     }
 );
 
-$app->get('/connexion',
-    function () use ($app) {
-        if(isset($_POST['email']) && isset($_POST['password'])){
-            $user = new User();
-            if($user->connexion($_POST))
-            {
-                $app->flash('success', 'Vous êtes désormais connecté !');
-                $app->redirect('/');
-            }
-            else{
-                $app->flash('error', 'Problème de connexion');
-            }
-        }
-        else {
-            $app->render('connexion.php');
-        }
-    }
-);
-
-
-$app->get('/inscription',
-    function () use ($app) {
-        if(isset($_POST['email']) && isset($_POST['password'])){
-            // Le form a été validé
-            $user = new User();
-            if($user->inscrire($_POST))
-            {
-                $app->flash('success', 'Vous êtes désormais inscrit, bienvenue !');
-                $app->redirect('/');
-            }
-            else{
-                $app->flash('error', 'Problème rencontré lors de l\'inscription ');
-            }
-        }
-        else {
-            // le form n'est pas validé, on est en consultation, on l'affiche simplement
-            $app->render('inscription.php');
-        }
-    }
-);
 
 
 
@@ -444,7 +451,8 @@ $app->get('/inscription',
 
 
 
-
+=======
+>>>>>>> branch 'master' of https://github.com/dorianDock/agile.git
 
 // POST route
 $app->post(
