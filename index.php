@@ -31,6 +31,7 @@ $app = new \Slim\Slim(array(
 require_once 'model/Model.php';
 require_once 'model/User.php';
 require_once 'model/Post.php';
+require_once 'model/Vote.php';
 
 /**
  * Step 3: Define the Slim application routes
@@ -91,12 +92,12 @@ $app->get('/post/voter/:postId/:vote',
     		return;
     	}
     	$array = array(
-    			'idUser' => 1,
+    			'idUser' => $_SESSION['id'],
     			'idPost' => $postId,
-    			'value' => $vote
+    			'isPositive' => $vote
     	);
         Vote::createNew($array);
-        $app->render('idees.php');
+        $app->redirect('/idees');
     }
 );
 

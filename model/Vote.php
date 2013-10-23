@@ -1,6 +1,5 @@
 <?php
-require_once 'Model.php';
-class Post extends Vote{
+class Vote extends Model{
 	private $id, $idAuteur, $idPost, $value;
 	public static $table = "Vote";
 	
