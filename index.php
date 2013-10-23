@@ -95,10 +95,16 @@ $app->get('/',
 
 $app->get('/post/voter/:postId/:vote',
     function ($postId, $vote) use ($app) {
-        $user = new User();
-        $user->hydraterSession();
-        $user->voter($postId, $vote);
-        $app->redirect('/post/'.$postId);
+    	if($vote != 1 && $vote != -1){
+    		return;
+    	}
+    	$array = array(
+    			'idUser' => 1,
+    			'idPost' => $postId,
+    			'value' => $vote
+    	);
+        Vote::createNew($array);
+        $app->render('idees.php');
     }
 );
 
