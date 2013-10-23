@@ -103,13 +103,11 @@ $app->get('/post/voter/:postId/:vote',
     }
 );
 
-<<<<<<< HEAD
 $app->get('/who-we-are/',
     function () use ($app) {
         $app->render('whoWeAre.php');
     }
 );
-=======
 $app->get('/connexion',
     function () use ($app) {
         if(isset($_POST['email']) && isset($_POST['password'])){
@@ -150,9 +148,6 @@ $app->get('/inscription',
         }
     }
 );
-
-
->>>>>>> 28f0951b4674c8bef376536ca0b500b6376f64bf
 
 // POST route
 $app->post(
