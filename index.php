@@ -44,6 +44,16 @@ $app->get('/pipeau/:name',
     }
 );
 
+
+$app->get('/idees',
+    function ($name) use ($app) {
+        require_once 'Models/idees.php';
+        $ideas = new Idees;
+        $ideas->getAll();       
+        $app->render('idees.php', array('idees'=>$ideas));
+    }
+);
+
 $app->get('/',
     function () {
         $template ="Bienvenue sur le site AVIS CITOYEN";
