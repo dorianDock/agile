@@ -28,6 +28,7 @@ $app = new \Slim\Slim(array(
     'view' => $myView
 ));
 
+require_once 'model/Model.php';
 require_once 'model/User.php';
 require_once 'model/Post.php';
 
@@ -46,13 +47,6 @@ $app->config(array(
 ));
 
 // GET route
-$app->get('/pipeau/:name',
-    function ($name) use ($app) {
-        $app->render('vue.php', array('name'=>$name));
-    }
-);
-
-
 $app->get('/idees',
     function () use ($app) {
         require_once 'Model/Post.php';
@@ -98,10 +92,16 @@ $app->get('/',
 
 $app->get('/post/voter/:postId/:vote',
     function ($postId, $vote) use ($app) {
-        $user = new User();
-        $user->hydraterSession();
-        $user->voter($postId, $vote);
-        $app->redirect('/post/'.$postId);
+    	if($vote != 1 && $vote != -1){
+    		return;
+    	}
+    	$array = array(
+    			'idUser' => 1,
+    			'idPost' => $postId,
+    			'value' => $vote
+    	);
+        Vote::createNew($array);
+        $app->render('idees.php');
     }
 );
 
@@ -110,6 +110,7 @@ $app->get('/who-we-are/',
         $app->render('whoWeAre.php');
     }
 );
+
 $app->get('/connexion',
     function () use ($app) {
         if(isset($_POST['email']) && isset($_POST['password'])){
@@ -150,6 +151,7 @@ $app->get('/inscription',
         }
     }
 );
+
 
 // POST route
 $app->post(

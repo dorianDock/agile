@@ -2,7 +2,7 @@
       <div class="jumbotron">
         <h1>Avis citoyen</h1>
         <p class="lead">Le site où vous pourrez enfin donner votre avis !</p>
-        <p><a class="btn btn-lg btn-success" href="#">Je veux m'incrire !</a></p>
+        <p><a class="btn btn-lg btn-primary" href="connexion">Me connecter</a>  <a class="btn btn-lg btn-success" href="inscription">Je veux m'inscrire !</a></p>
       </div>
 
       <!-- Example row of columns -->
@@ -23,3 +23,7 @@
           <p><a class="btn btn-primary" href="#">Lire plus &raquo;</a></p>
         </div>
       </div>
+	  <script>
+		$("#accueil").addClass("active");
+	  </script>
+	  
