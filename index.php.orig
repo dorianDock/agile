@@ -45,18 +45,18 @@ $app->get('/pipeau/:name',
     }
 );
 
+<<<<<<< HEAD
 
 $app->get('/idees',
     function ($name) use ($app) {
-        require_once 'Models/Post.php';
-        $idees = new Post();
+        require_once 'Models/idees.php';
+        $idees = new Idees();
         $idees->getAll();
         $votes = new Votes ($idees);
         $votes->getVotesByPost();
         $app->render('idees.php', array('idees'=>$idees));
     }
-);
-
+=======
 // GET route
 $app->get('/insert/', function() use($app){
 		$app->render('insertPostForm.php');
@@ -71,6 +71,7 @@ $app->post('/insertPost/', function() use($app){
 		echo $app->request->post('message');
 		$app->render('insertPost.php');
 	}
+>>>>>>> ae3dc229658b383d93e9192d2b21559f3c68fe7f
 );
 
 $app->get('/',
