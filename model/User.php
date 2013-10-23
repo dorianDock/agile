@@ -1,14 +1,9 @@
 <?php
-<<<<<<< HEAD
 require_once 'Model.php';
 class User extends Model{
 	private $id, $mail, $mdp, $nom, $prenom, $isAdmin, $isResponsable;
 	protected static $table = 'User';
-=======
-class User extends Model{
-	private $id, $mail, $mdp, $nom, $prenom, $isAdmin;
->>>>>>> c48f2a934bda321a5e2ebd99f3bb8b91ead0593b
-
+	
 	public function getMail(){
 		return $this->mail;
 	}
