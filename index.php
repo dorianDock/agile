@@ -119,7 +119,6 @@ $app->get('/connexion',
             $user = new User();
             if($user->connexion($_POST))
             {
-<<<<<<< HEAD
                 $app->flash('success', 'Vous êtes désormais connecté !');
                 $app->redirect('/');
             }
@@ -163,9 +162,7 @@ $app->get('/connexion',
             if($user->connexion($_POST))
             {
                 $app->flash('success', 'Vous êtes désormais connecté !');
-=======
                 $app->flash('success', 'Vous Ãªtes dÃ©sormais connectÃ© !');
->>>>>>> 9908223f6e012bb8d172a2f5ed827cc43f88096c
                 $app->redirect('/');
             }
             else{
