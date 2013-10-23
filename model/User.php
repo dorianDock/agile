@@ -60,7 +60,11 @@ class User {
 
 	}
 
-
+	// Indiquer si oui ou non on soutient une idée
+	public function ecrire($titre, $message){
+		
+	
+	}
 
 
 }
