@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Step 1: Require the Slim Framework
  *
@@ -27,6 +28,7 @@ $app = new \Slim\Slim(array(
     'view' => $myView
 ));
 
+require_once 'model/Model.php';
 require_once 'model/User.php';
 require_once 'model/Post.php';
 
@@ -45,21 +47,16 @@ $app->config(array(
 ));
 
 // GET route
-$app->get('/pipeau/:name',
-    function ($name) use ($app) {
-        $app->render('vue.php', array('name'=>$name));
-    }
-);
-
-
 $app->get('/idees',
-    function ($name) use ($app) {
-        require_once 'Models/idees.php';
-        $idees = new Idees();
-        $idees->getAll();
-        $votes = new Votes ($idees);
-        $votes->getVotesByPost();
-        $app->render('idees.php', array('idees'=>$idees));
+    function () use ($app) {
+        require_once 'Model/Post.php';
+       // $idees  = new Post();
+        //$result =$idees->getAll();
+        
+        $result = Post::find(array());
+        //$votes = new Votes ($idees);
+       // $votes->getVotesByPost();
+        $app->render('idees.php', array('idees'=>$result));
     }
 );
 
@@ -97,10 +94,109 @@ $app->get('/',
 
 $app->get('/post/voter/:postId/:vote',
     function ($postId, $vote) use ($app) {
-        $user = new User();
-        $user->hydraterSession();
-        $user->voter($postId, $vote);
-        $app->redirect('/post/'.$postId);
+    	if($vote != 1 && $vote != -1){
+    		return;
+    	}
+    	$array = array(
+    			'idUser' => 1,
+    			'idPost' => $postId,
+    			'value' => $vote
+    	);
+        Vote::createNew($array);
+        $app->render('idees.php');
+    }
+);
+
+$app->get('/who-we-are/',
+    function () use ($app) {
+        $app->render('whoWeAre.php');
+    }
+);
+
+$app->get('/connexion',
+    function () use ($app) {
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            $user = new User();
+            if($user->connexion($_POST))
+            {
+<<<<<<< HEAD
+                $app->flash('success', 'Vous êtes désormais connecté !');
+                $app->redirect('/');
+            }
+            else{
+                $app->flash('error', 'Problème de connexion');
+            }
+        }
+        else {
+            $app->render('connexion.php');
+        }
+    }
+);
+
+
+$app->get('/inscription',
+    function () use ($app) {
+        if(isset($_POST['mail']) && isset($_POST['mdp'])){
+            // Le form a été validé
+            $user = new User();
+            if($user->inscrire($_POST))
+            {
+                $app->flash('success', 'Vous êtes désormais inscrit, bienvenue !');
+                $app->redirect('/');
+            }
+            else{
+                $app->flash('error', 'Problème rencontré lors de l\'inscription ');
+            }
+			$app->redirect("/");
+        }
+        else {
+            // le form n'est pas validé, on est en consultation, on l'affiche simplement
+            $app->render('inscription.php');
+        }
+    }
+);
+
+$app->get('/connexion',
+    function () use ($app) {
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            $user = new User();
+            if($user->connexion($_POST))
+            {
+                $app->flash('success', 'Vous êtes désormais connecté !');
+=======
+                $app->flash('success', 'Vous Ãªtes dÃ©sormais connectÃ© !');
+>>>>>>> 9908223f6e012bb8d172a2f5ed827cc43f88096c
+                $app->redirect('/');
+            }
+            else{
+                $app->flash('error', 'ProblÃ¨me de connexion');
+            }
+        }
+        else {
+            $app->render('connexion.php');
+        }
+    }
+);
+
+
+$app->get('/inscription',
+    function () use ($app) {
+        if(isset($_POST['email']) && isset($_POST['password'])){
+            // Le form a Ã©tÃ© validÃ©
+            $user = new User();
+            if($user->inscrire($_POST))
+            {
+                $app->flash('success', 'Vous Ãªtes dÃ©sormais inscrit, bienvenue !');
+                $app->redirect('/');
+            }
+            else{
+                $app->flash('error', 'ProblÃ¨me rencontrÃ© lors de l\'inscription ');
+            }
+        }
+        else {
+            // le form n'est pas validÃ©, on est en consultation, on l'affiche simplement
+            $app->render('inscription.php');
+        }
     }
 );
 
